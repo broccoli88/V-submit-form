@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Submit from "../views/Submit.vue";
+import Main from "../views/Main.vue";
 
 const routes = [
   {
     path: "/",
-    name: "submit",
-    component: Submit,
+    name: "main",
+    component: Main,
   },
 ];
 
