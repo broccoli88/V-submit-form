@@ -1,15 +1,15 @@
 <template>
     <div class="log-in-container">
-        <form class="log-in">
+        <form class="form">
             <div class="input">
                 <label for="user-name">User Name</label>
-                <input type="text" id="user-name" />
+                <input type="text" id="user-name" placeholder="User Name" />
             </div>
             <div class="input">
                 <label for="password">Password</label>
-                <input type="password" id="password" />
+                <input type="password" id="password" placeholder="Password" />
             </div>
-            <button type="submit" id="submitButton">Log In</button>
+            <button type="submit" class="submitButton">Log In</button>
         </form>
         <div class="forgot">
             <div>
@@ -25,7 +25,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+    name: "LogIn",
+};
 </script>
 
 <style>
@@ -41,8 +43,8 @@ export default {};
     align-items: center;
 }
 
-.log-in {
-    width: 100%;
+.form {
+    width: min(100%, 500px);
     height: 100%;
 
     display: flex;
@@ -60,6 +62,7 @@ export default {};
 .input > label {
     margin-bottom: 0.5rem;
     font-size: clamp(1.2rem, 1.4vw, 1.6rem);
+    align-self: flex-start;
 }
 
 .input > input {
@@ -73,7 +76,7 @@ export default {};
     outline: 5px solid hsl(180, 100%, 25%);
 }
 
-#submitButton {
+.submitButton {
     margin-top: 1rem;
     width: 8em;
     padding: 0.3em;
@@ -85,9 +88,11 @@ export default {};
     border: 2px solid teal;
     border-radius: 10px;
     background-color: transparent;
+
+    cursor: pointer;
 }
 
-#submitButton:active {
+.submitButton:active {
     background-color: teal;
     box-shadow: 0 0 10px hsl(180, 100%, 35%);
 }

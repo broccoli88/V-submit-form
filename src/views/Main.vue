@@ -3,22 +3,52 @@
         <h1>Log In</h1>
         <div class="container">
             <div class="tabs">
-                <div class="tab active">
-                    <h2>Log In</h2>
-                </div>
-                <div class="tab">
-                    <h2>Register</h2>
-                </div>
+                <button
+                    data-tab="LogIn"
+                    class="tab"
+                    :class="{ active: isActive }"
+                    @click="switchTab"
+                >
+                    Log In
+                </button>
+                <button
+                    data-tab="Register"
+                    class="tab"
+                    :class="{ active: !isActive }"
+                    @click.="switchTab"
+                >
+                    Register
+                </button>
             </div>
-            <LogIn />
+            <component :is="activeTab" />
         </div>
     </div>
 </template>
 
 <script>
 import LogIn from "../components/LogIn.vue";
+import Register from "../components/Register.vue";
 export default {
-    components: { LogIn },
+    components: { LogIn, Register },
+    data() {
+        return {
+            isActive: true,
+            activeTab: "LogIn",
+        };
+    },
+
+    methods: {
+        switchTab(e) {
+            this.activeTab = e.target.dataset.tab;
+            if (this.activeTab === "LogIn") {
+                this.isActive = true;
+            }
+
+            if (this.activeTab === "Register") {
+                this.isActive = false;
+            }
+        },
+    },
 };
 </script>
 
@@ -40,7 +70,6 @@ export default {
 
 h1,
 h2 {
-    color: hsl(0, 0%, 90%);
     font-family: "Staatliches", cursive;
 }
 
@@ -71,12 +100,18 @@ h2 {
 }
 
 .tab {
+    background-color: hsl(0, 0%, 10%);
+    border: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    color: hsl(0, 0%, 90%);
+    font-family: "Staatliches", cursive;
+    cursor: pointer;
+
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    cursor: pointer;
 }
 
 .active {
@@ -84,8 +119,8 @@ h2 {
     box-shadow: 0 0 15px hsl(0, 0%, 5%), inset 0 0 10px hsl(0, 0%, 20%);
 }
 
-.active > h2 {
+.tab.active {
     font-size: 2.5rem;
-    color: white;
+    /* color: white; */
 }
 </style>
