@@ -83,7 +83,7 @@ h2 {
 
 .container {
     width: min(80%, 800px);
-    height: 60%;
+    height: 70%;
 
     background-color: hsl(0, 0%, 10%);
     box-shadow: 0 0 15px hsl(0, 0%, 5%), inset 0 0 15px hsl(0, 0%, 15%);
@@ -122,5 +122,11 @@ h2 {
 .tab.active {
     font-size: 2.5rem;
     /* color: white; */
+}
+
+@media (min-width: 600px) {
+    .container {
+        height: 60%;
+    }
 }
 </style>
